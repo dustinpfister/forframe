@@ -25,9 +25,8 @@ p{
 #ui_display{
 
     position:absolute;
-    width:70%;
+    width:65%;
     height:480px;
-    background: #ff0000;
 
 }
 
@@ -36,8 +35,8 @@ p{
     position:absolute;
     top:480px;
     width:70%;
-
-    background: #00ff00;
+	
+	margin-left:20px;
 
 }
 
@@ -45,16 +44,16 @@ p{
 
     position:absolute;
     width:30%;
-    left:70%;
+    left:65%;
     top:0px;
 
     height:480px;
-    background:#0000ff;
 
 }
 
 .ui_plugin_container{
 
     outline:1px solid #000000;
-
+    min-height: 50px;
+	background: rgba(0,255,255,.4);
 }
