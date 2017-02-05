@@ -2,5 +2,53 @@ body {
 
     background :  #a0a0a0;
     color :  # 000000;
+    padding:0px;
+    margin:0px;
+
+}
+
+p{
+
+    margin:5px;
+
+}
+
+/* for frame user interface */
+
+#ui_container{
+
+    position:absolute;
+    width:100%;
+
+}
+
+#ui_display{
+
+    position:absolute;
+    width:70%;
+    height:480px;
+    background: #ff0000;
+
+}
+
+#ui_controls{
+
+    position:absolute;
+    top:480px;
+    width:70%;
+
+    background: #00ff00;
+
+}
+
+#ui_plugins{
+
+    position:absolute;
+    width:30%;
+    left:70%;
+    top:0px;
+
+    height:480px;
+    background:#0000ff;
 
 }

@@ -126,7 +126,7 @@ scene.injectPlugin({
 
         }
 
-        disp = document.getElementById('for_frame_ui_disp');
+        disp = document.getElementById('for_frame_ui_info');
 
         if (disp) {
 

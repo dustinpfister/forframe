@@ -137,7 +137,7 @@ scene({
 });
 
 // inject a canvas into an element with an id of 'apparea'.
-scene.injectCanvas('apparea');
+scene.injectCanvas('ui_display');
 
 scene.load(
     [
@@ -153,7 +153,7 @@ scene.load(
             appendRender : function (ctx) {},
             appendZ : 0,
 
-            containerId : 'apparea',
+            containerId : 'ui_controls',
 
             frameRate : 40
         };
