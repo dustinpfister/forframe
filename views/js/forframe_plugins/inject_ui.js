@@ -2,6 +2,14 @@
 scene.injectPlugin({
 
     name : 'injectUI',
+    ui : function () {
+
+        var ui = document.createElement('p');
+        ui.innerHTML = '<p><\/p>';
+
+        return ui;
+
+    },
 
     method : function (scope) {
 
@@ -65,7 +73,8 @@ scene.injectPlugin({
         });
         ui.appendChild(control);
 
-         */
+		*/
+         
 
         // info div
         control = document.createElement('div');

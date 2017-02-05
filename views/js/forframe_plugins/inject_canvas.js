@@ -3,6 +3,16 @@ scene.injectPlugin({
 
     name : 'injectCanvas',
 
+    // returns html that is to be injected into the plugins iframe
+    ui : function () {
+
+        var ui = document.createElement('p');
+        ui.innerHTML = '<p><\/p>';
+
+        return ui;
+
+    },
+
     method : function (id) {
 
         var container = document.createElement('div'),

@@ -3,6 +3,15 @@ scene.injectPlugin({
 
     name : 'renderFrame',
 
+    ui : function () {
+
+        var ui = document.createElement('p');
+        ui.innerHTML = '<p><\/p>';
+
+        return ui;
+
+    },
+
     method : function (scope) {
 
         var prop,
@@ -132,7 +141,6 @@ scene.injectPlugin({
 
             disp.innerHTML = 'frame: ' + state.frame + '\/' + state.maxFrame;
 
-            7
         }
 
     }

@@ -179,7 +179,7 @@ var scene = (function () {
         }
 
         // projectName
-        state.projectName = options.projectName ? options.projectName: 'untitled';
+        state.projectName = options.projectName ? options.projectName : 'untitled';
 
         // default to 50 frames if maxFrame is not given
         state.maxFrame = options.maxFrame ? options.maxFrame : 50;
@@ -259,6 +259,12 @@ var scene = (function () {
     // making state public
     api.state = state;
 
+    api.onPlugInject = function (plugObj) {
+
+        console.log('plugin ' + plugObj.name + ' injected.');
+
+    },
+
     // inject plugins
     api.injectPlugin = function (plugObj) {
 
@@ -269,8 +275,13 @@ var scene = (function () {
 
             api[plugObj.name] = function () {
 
-                plugins[plugObj.name].method.call(state, arguments)
+                console.log(plugObj.name)
+
+                plugins[plugObj.name].method.call(state, arguments);
+
             };
+
+            api.onPlugInject(plugObj);
 
         }
 

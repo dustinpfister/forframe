@@ -3,18 +3,34 @@ scene.injectPlugin({
 
     name : 'toPNGCollection',
 
+    ui : function () {
+
+        var control = document.createElement('input');
+        control.type = 'button';
+        control.value = 'toPNGCollection';
+        control.style.margin = '10px';
+        control.addEventListener('click', function (e) {
+
+            scene.toPNGCollection();
+
+        });
+
+        return control;
+
+    },
+
     // convert your animation to a *.png file collection
     method : function (scope) {
-		
-		var self = this,
+
+        var self = this,
 
         saveFrames = function () {
 
             scene.setFrame(self.frame);
-            scene.renderFrame(scope[0]);
+            scene.renderFrame(scope[0] || {});
 
-			console.log(self);
-			
+            //console.log(self);
+
             self.canvas.toBlob(function (blob) {
 
                 saveAs(blob, 'frame_' + self.frame + '.png');
