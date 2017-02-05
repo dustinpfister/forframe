@@ -94,7 +94,7 @@ scene({
 
     projectName : 'blob_2',
 
-    maxFrame : 10,
+    maxFrame : 75,
 
     viewPort : {
 
