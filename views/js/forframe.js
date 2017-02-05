@@ -273,13 +273,15 @@ var scene = (function () {
             // just reference for now
             plugins[plugObj.name] = plugObj;
 
-            api[plugObj.name] = function () {
+            if (plugins[plugObj.name].method) {
 
-                console.log(plugObj.name)
+                api[plugObj.name] = function () {
 
-                plugins[plugObj.name].method.call(state, arguments);
+                    plugins[plugObj.name].method.call(state, arguments);
 
-            };
+                };
+
+            }
 
             api.onPlugInject(plugObj);
 
