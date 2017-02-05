@@ -36,6 +36,12 @@ app.get('*', function (req, res, next) {
 
 });
 
+app.post('*', function (req, res) {
+
+    require('./node_scripts/responder.js').respondTo(req, res);
+
+});
+
 // get from root path
 app.get('/', function (req, res) {
 
