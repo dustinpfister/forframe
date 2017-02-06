@@ -10,6 +10,7 @@ scene.injectPlugin((function () {
         var encoder = new GIFEncoder(),
         binary_gif,
         data_url,
+        disp,
 
         log = function (mess) {
 
@@ -49,14 +50,16 @@ scene.injectPlugin((function () {
         progress = function (frame, maxFrame, done) {
 
             var container = document.getElementById('forframe_autogif'),
-            disp,
+            //disp,
             percent = frame / maxFrame;
 
             if (container) {
 
-                disp = document.getElementsByClassName('forframe_autogif_progress')[0];
+                //disp = document.getElementsByClassName('forframe_autogif_progress')[0];
 
-                log(percent + '');
+                //log(percent + '');
+
+                console.log(disp);
 
                 disp.style.width = Math.floor(percent * 100) + '%';
 
@@ -177,15 +180,6 @@ scene.injectPlugin((function () {
 
             processNext();
 
-        },
-
-        makeGif = function () {
-
-            var img = new Image();
-            img.src = data_url;
-            document.body.appendChild(img);
-            log(binary_gif)
-
         };
 
         return {
@@ -197,6 +191,8 @@ scene.injectPlugin((function () {
                 var container = document.createElement('div'),
                 // inject frames button
                 control = document.createElement('input');
+
+                container.id = 'forframe_autogif';
 
                 control.type = 'button';
                 control.value = 'save gif to server';
@@ -216,6 +212,9 @@ scene.injectPlugin((function () {
                 control.style.width = '100%';
                 control.style.height = '20px';
                 control.style.background = '#aaffaa';
+
+                disp = control;
+
                 container.appendChild(control);
 
                 return container;
