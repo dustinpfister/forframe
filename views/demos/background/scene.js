@@ -39,10 +39,10 @@ scene({
 
                 //pt.x = this.percentDone * 100;
 
-                pt.x = this.viewPort.w / 2 - pt.w / 2;
-                pt.y = this.viewPort.h / 2 - pt.h / 2 - 50 * this.percentDone;
+                var bias = 1 - Math.abs(.5 - this.percentDone) / .5;
 
-                console.log(this);
+                pt.x = this.viewPort.w / 2 - pt.w / 2;
+                pt.y = this.viewPort.h / 2 - pt.h / 2 - 50 * bias;
 
             },
             skin : {
