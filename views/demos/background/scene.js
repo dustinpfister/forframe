@@ -130,7 +130,8 @@ scene.injectCanvas('ui_display');
 scene.load(
     [
         'img/mylogo_128.png',
-        'demos/background/img/seahorse.jpg'
+        'demos/background/img/horse_body.png',
+        'demos/background/img/horse_head.png'
     ],
     function (progress) {
 
