@@ -36,8 +36,8 @@ scene({
         {
 
             id : 'horse_body',
-            w : 64,
-            h : 128,
+            w : 150,
+            h : 200,
             forFrame : function (pt) {
 
                 //pt.x = this.percentDone * 100;
@@ -58,7 +58,7 @@ scene({
                     //ctx.strokeStyle = '#ff0000';
                     //ctx.strokeRect(0, 0, pt.w, pt.h);
 
-                    ctx.drawImage(this.img[skin.imgIndex],0,0,64,128);
+                    ctx.drawImage(this.img[skin.imgIndex],0,0,pt.w,pt.h);
 
                 }
 
@@ -70,8 +70,8 @@ scene({
         {
 
             id : 'horse_head',
-            w : 32,
-            h : 96,
+            w : 96,
+            h : 110,
             forFrame : function (pt) {
 
                 //pt.x = this.percentDone * 100;
@@ -87,8 +87,8 @@ scene({
                 //pt.rx = 0;
                 //pt.x=0;
                 //pt.y=0;
-                pt.x = pt_hb.x+30;
-                pt.y = pt_hb.y;
+                pt.x = pt_hb.x+80;
+                pt.y = pt_hb.y-16;
 
 
                 pt.radian = .2* bias
@@ -99,18 +99,18 @@ scene({
 
             },
             skin : {
-                imgIndex : 2,
+                //imgIndex : 2,
                 sx : 0,
                 appendRender : function (ctx, skin) {
 
                     var pt = skin.part;
 
-                    //ctx.strokeStyle = '#ff0000';
+                   // ctx.strokeStyle = '#ff0000';
                     //ctx.strokeRect(0, 0, pt.w, pt.h);
 
                     //ctx.drawImage(this.img[skin.imgIndex],0,0);
 					
-                    ctx.drawImage(this.img[skin.imgIndex],-32,0,64,128);
+                    ctx.drawImage(this.img[2],0,0,pt.w,pt.h);
 
                 }
 
@@ -132,7 +132,7 @@ scene.load(
     [
         'img/mylogo_128.png',
         'demos/background/img/horse_body.png',
-        'demos/background/img/horse_head.png'
+        'demos/background/img/horse_head_2.png'
     ],
     function (progress) {
 
