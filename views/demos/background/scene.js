@@ -55,11 +55,10 @@ scene({
 
                     var pt = skin.part;
 
-                    ctx.strokeStyle = '#ff0000';
-                    ctx.strokeRect(0, 0, pt.w, pt.h);
+                    //ctx.strokeStyle = '#ff0000';
+                    //ctx.strokeRect(0, 0, pt.w, pt.h);
 
-                    //ctx.drawImage(this.img[skin.imgIndex],0,0);
-
+                    ctx.drawImage(this.img[skin.imgIndex],0,0,64,128);
 
                 }
 
@@ -88,10 +87,11 @@ scene({
                 //pt.rx = 0;
                 //pt.x=0;
                 //pt.y=0;
-                pt.x = pt_hb.x + pt_hb.w / 2+16;
-                pt.y = pt_hb.y - pt.h / 2;
+                pt.x = pt_hb.x+30;
+                pt.y = pt_hb.y;
 
-                pt.radian = Math.PI / 4 - Math.PI / 4 * bias
+
+                pt.radian = .2* bias
                     //pt.x = this.viewPort.w / 2 - pt.w / 2 + 32;
                     //pt.y = this.viewPort.h / 2 - pt.h / 2 - 50 * bias - 64;
 
@@ -99,17 +99,18 @@ scene({
 
             },
             skin : {
-                imgIndex : 1,
+                imgIndex : 2,
                 sx : 0,
                 appendRender : function (ctx, skin) {
 
                     var pt = skin.part;
 
-                    ctx.strokeStyle = '#ff0000';
-                    ctx.strokeRect(0, 0, pt.w, pt.h);
+                    //ctx.strokeStyle = '#ff0000';
+                    //ctx.strokeRect(0, 0, pt.w, pt.h);
 
                     //ctx.drawImage(this.img[skin.imgIndex],0,0);
-
+					
+                    ctx.drawImage(this.img[skin.imgIndex],-32,0,64,128);
 
                 }
 
