@@ -32,14 +32,18 @@ scene({
 
     parts : [{
 
-            id : 'd',
-            w : 32,
-            h : 32,
+            id : 'horse_body',
+            w : 64,
+            h : 128,
             forFrame : function (pt) {
 
-			    pt.x = this.percentDone * 100;
-			
-              
+                //pt.x = this.percentDone * 100;
+
+                pt.x = this.viewPort.w / 2 - pt.w / 2;
+                pt.y = this.viewPort.h / 2 - pt.h / 2 - 50 * this.percentDone;
+
+                console.log(this);
+
             },
             skin : {
                 imgIndex : 1,
@@ -48,8 +52,11 @@ scene({
 
                     var pt = skin.part;
 
-                    ctx.fillStyle = '#ff0000';
-                    ctx.fillRect(0, 0, pt.w, pt.h);
+                    ctx.strokeStyle = '#ff0000';
+                    ctx.strokeRect(0, 0, pt.w, pt.h);
+
+                    //ctx.drawImage(this.img[skin.imgIndex],0,0);
+
 
                 }
 
@@ -69,7 +76,7 @@ scene.injectCanvas('ui_display');
 scene.load(
     [
         'img/mylogo_128.png',
-        'img/sheet1.png'
+        'demos/background/img/seahorse.jpg'
     ],
     function (progress) {
 
