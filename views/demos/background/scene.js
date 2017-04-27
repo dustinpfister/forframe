@@ -30,7 +30,10 @@ scene({
         }
     },
 
-    parts : [{
+    parts : [
+
+        // body
+        {
 
             id : 'horse_body',
             w : 64,
@@ -42,7 +45,57 @@ scene({
                 var bias = 1 - Math.abs(.5 - this.percentDone) / .5;
 
                 pt.x = this.viewPort.w / 2 - pt.w / 2;
-                pt.y = this.viewPort.h / 2 - pt.h / 2 - 50 * bias;
+                pt.y = this.viewPort.h / 2 - pt.h / 2 - 50 * bias+100;
+
+            },
+            skin : {
+                imgIndex : 1,
+                sx : 0,
+                appendRender : function (ctx, skin) {
+
+                    var pt = skin.part;
+
+                    ctx.strokeStyle = '#ff0000';
+                    ctx.strokeRect(0, 0, pt.w, pt.h);
+
+                    //ctx.drawImage(this.img[skin.imgIndex],0,0);
+
+
+                }
+
+            }
+
+        },
+
+        // head
+        {
+
+            id : 'horse_head',
+            w : 32,
+            h : 96,
+            forFrame : function (pt) {
+
+                //pt.x = this.percentDone * 100;
+                var pt_hb = this.parts['horse_body'];
+
+                var bias = 1 - Math.abs(.5 - this.percentDone) / .5;
+
+                //pt.radian = Math.PI / 4 - Math.PI / 4 * bias;
+                //pt.rx = pt_hb.x;
+                //pt.ry = pt_hb.y;
+
+                //pt.ry = 0;
+                //pt.rx = 0;
+                //pt.x=0;
+                //pt.y=0;
+                pt.x = pt_hb.x + pt_hb.w / 2+16;
+                pt.y = pt_hb.y - pt.h / 2;
+
+                pt.radian = Math.PI / 4 - Math.PI / 4 * bias
+                    //pt.x = this.viewPort.w / 2 - pt.w / 2 + 32;
+                    //pt.y = this.viewPort.h / 2 - pt.h / 2 - 50 * bias - 64;
+
+                    console.log();
 
             },
             skin : {
@@ -63,6 +116,7 @@ scene({
             }
 
         }
+
     ],
 
     // define the forFrame movement

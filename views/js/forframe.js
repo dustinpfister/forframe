@@ -125,7 +125,7 @@ var scene = (function () {
     // the Part Class.
     var Part = function (values) {
 
-        var defaults = 'id:none;w:32;h:32;x:0;y:0;radian:0;opacity:none;forFrame:none;'.split(';'),
+        var defaults = 'id:none;w:32;h:32;x:0;y:0;rx:0;ry:0;radian:0;opacity:none;forFrame:none;'.split(';'),
         i = 0,
         len = defaults.length,
         current;
@@ -148,6 +148,10 @@ var scene = (function () {
             i += 1;
 
         }
+
+        // setting rxn and ry to undefined for now
+        this.rx = undefined;
+        this.ry = undefined;
 
         // default that Parts skin to a blank Skin class instance
         this.skin = new Skin(this, values.skin);
