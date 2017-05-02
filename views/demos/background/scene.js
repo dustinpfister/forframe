@@ -4,11 +4,35 @@ scene.js demo for forframe.js
 
  */
 
+var BG_lin = function (options) {
+
+    options = options || {};
+
+    this.sw = options.sw || 3000;
+    this.sh = options.sh || 952;
+
+    this.vp = {
+
+        w : 200,
+        h : 200,
+        x : 0,
+        y : 0
+
+    };
+
+    this.drawCalls = [];
+
+};
+
+BG_lin.prototype.findBGCalls = function () {};
+
+var sec = new BG_lin();
+
 scene({
 
-    projectName : 'demo1',
+    projectName : 'background',
 
-    maxFrame : 50,
+    maxFrame : 100,
 
     viewPort : {
 
@@ -30,87 +54,29 @@ scene({
         }
     },
 
-    parts : [
+    parts : [{
 
-        // body
-        {
-
-            id : 'horse_body',
-            w : 150,
-            h : 200,
-            forFrame : function (pt) {
-
-                //pt.x = this.percentDone * 100;
-
-                var bias = 1 - Math.abs(.5 - this.percentDone) / .5;
-
-                pt.x = this.viewPort.w / 2 - pt.w / 2;
-                pt.y = this.viewPort.h / 2 - pt.h / 2 - 50 * bias+100;
-
-            },
+            id : 'box',
+            w : 640,
+            h : 480,
+            forFrame : function (pt) {},
             skin : {
                 imgIndex : 1,
                 sx : 0,
+                sy : 0,
+                sw : 1200,
+                sh : 1200,
                 appendRender : function (ctx, skin) {
 
                     var pt = skin.part;
 
-                    //ctx.strokeStyle = '#ff0000';
-                    //ctx.strokeRect(0, 0, pt.w, pt.h);
+                    var bias = 1 - Math.abs(.5 - this.percentDone) / .5;
 
-                    ctx.drawImage(this.img[skin.imgIndex],0,0,pt.w,pt.h);
+                    ctx.strokeStyle = '#ff0000';
+                    ctx.strokeRect(0, 0, pt.w, pt.h);
 
-                }
-
-            }
-
-        },
-
-        // head
-        {
-
-            id : 'horse_head',
-            w : 96,
-            h : 110,
-            forFrame : function (pt) {
-
-                //pt.x = this.percentDone * 100;
-                var pt_hb = this.parts['horse_body'];
-
-                var bias = 1 - Math.abs(.5 - this.percentDone) / .5;
-
-                //pt.radian = Math.PI / 4 - Math.PI / 4 * bias;
-                //pt.rx = pt_hb.x;
-                //pt.ry = pt_hb.y;
-
-                //pt.ry = 0;
-                //pt.rx = 0;
-                //pt.x=0;
-                //pt.y=0;
-                pt.x = pt_hb.x+80;
-                pt.y = pt_hb.y-16;
-
-
-                pt.radian = .2* bias
-                    //pt.x = this.viewPort.w / 2 - pt.w / 2 + 32;
-                    //pt.y = this.viewPort.h / 2 - pt.h / 2 - 50 * bias - 64;
-
-                    console.log();
-
-            },
-            skin : {
-                //imgIndex : 2,
-                sx : 0,
-                appendRender : function (ctx, skin) {
-
-                    var pt = skin.part;
-
-                   // ctx.strokeStyle = '#ff0000';
-                    //ctx.strokeRect(0, 0, pt.w, pt.h);
-
-                    //ctx.drawImage(this.img[skin.imgIndex],0,0);
-					
-                    ctx.drawImage(this.img[2],0,0,pt.w,pt.h);
+                    skin.sw = 1200;
+                    skin.sh = 1200;
 
                 }
 
@@ -131,8 +97,7 @@ scene.injectCanvas('ui_display');
 scene.load(
     [
         'img/mylogo_128.png',
-        'demos/background/img/horse_body.png',
-        'demos/background/img/horse_head_2.png'
+        'demos/background/img/background_2_seamless.png'
     ],
     function (progress) {
 

@@ -69,13 +69,13 @@ scene.injectPlugin({
 
             }
 
-            //ctx.translate(pt.x + pt.w / 2, pt.y + pt.h / 2);
+            ctx.translate(pt.x + pt.w / 2, pt.y + pt.h / 2);
 
             // set rotation r, and rotation y
-            rx = pt.rx === undefined ? pt.x + pt.w / 2 : pt.rx;
-            ry = pt.ry === undefined ? pt.y + pt.w / 2 : pt.ry;
+            //rx = pt.rx === undefined ? pt.x + pt.w / 2 : pt.rx;
+            //ry = pt.ry === undefined ? pt.y + pt.w / 2 : pt.ry;
 
-            ctx.translate(rx, ry);
+            //ctx.translate(rx, ry);
             ctx.rotate(pt.radian);
 
             skin = pt.skin;
