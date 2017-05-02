@@ -53,16 +53,23 @@ scene({
 
                     var bias = 1 - Math.abs(.5 - this.percentDone) / .5;
 
-                    ctx.strokeStyle = '#ffffff';
                     ctx.lineWidth = 3;
 
                     ctx.fillStyle = '#ffffff';
                     ctx.textBaseline = 'top';
                     ctx.font = '20px courier';
 
-                    // the part
+                    // the part area
+
+                    ctx.strokeStyle = '#ffffff';
                     ctx.strokeRect(0, 0, pt.w, pt.h);
-                    ctx.fillText('the part', 0, 0);
+                    ctx.fillText('the part area', 0, 0);
+
+                    // the part
+
+                    ctx.strokeStyle = '#ff00ff';
+                    ctx.strokeRect(pt.rx, pt.ry, pt.w, pt.h);
+                    ctx.fillText('the ajusted area', pt.rx, pt.ry);
 
                 }
 
