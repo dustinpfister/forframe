@@ -113,7 +113,7 @@ var scene = (function () {
         ctx.save();
 
         // draw relative to the part;
-        ctx.translate(-this.part.w / 2, -this.part.h / 2);
+        //ctx.translate(-this.part.w, this.part.h);
 
         // in the draw function this refers to the current state, and pass the drawing context.
         this.appendRender.call(state, ctx, this);

@@ -37,8 +37,13 @@ scene({
             h : 128,
             forFrame : function (pt) {
 
-                pt.x = 50;
-                pt.y = 50;
+                var bias = 1 - Math.abs(.5 - this.percentDone) / .5;
+
+                pt.x = 240;
+                pt.y = 180;
+                pt.rx = -64 * bias;
+                pt.ry = -64 * bias;
+                //pt.radian = Math.PI * 2 * bias;
 
             },
             skin : {
@@ -48,11 +53,16 @@ scene({
 
                     var bias = 1 - Math.abs(.5 - this.percentDone) / .5;
 
-                    ctx.strokeStyle = '#ff0000';
-                    ctx.strokeRect(0, 0, pt.w, pt.h);
+                    ctx.strokeStyle = '#ffffff';
+                    ctx.lineWidth = 3;
 
-                    skin.sw = 1200;
-                    skin.sh = 1200;
+                    ctx.fillStyle = '#ffffff';
+                    ctx.textBaseline = 'top';
+                    ctx.font = '20px courier';
+
+                    // the part
+                    ctx.strokeRect(0, 0, pt.w, pt.h);
+                    ctx.fillText('the part', 0, 0);
 
                 }
 

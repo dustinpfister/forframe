@@ -69,15 +69,17 @@ scene.injectPlugin({
 
             }
 
-            ctx.translate(pt.x + pt.w / 2, pt.y + pt.h / 2);
-
             // set rotation r, and rotation y
             //rx = pt.rx === undefined ? pt.x + pt.w / 2 : pt.rx;
             //ry = pt.ry === undefined ? pt.y + pt.w / 2 : pt.ry;
 
             //ctx.translate(rx, ry);
-            ctx.rotate(pt.radian);
 
+
+            // new way
+			
+            ctx.translate(pt.x, pt.y);
+            ctx.rotate(pt.radian);
             skin = pt.skin;
 
             if (Number(skin.imgIndex) > -1) {
@@ -90,8 +92,10 @@ scene.injectPlugin({
                     skin.sy,
                     skin.sw,
                     skin.sh,
-                    -pt.w / 2 + Number(skin.xOffset),
-                    -pt.h / 2 + Number(skin.yOffset),
+                    //-pt.w / 2 + Number(skin.xOffset),
+                    //-pt.h / 2 + Number(skin.yOffset),
+                    pt.rx,
+                    pt.ry,
                     pt.w,
                     pt.h);
 
@@ -103,13 +107,58 @@ scene.injectPlugin({
 
             }
 
+            ctx.strokeStyle = '#ffff00';
+            ctx.strokeRect(pt.rx,
+                pt.ry,
+                pt.w,
+                pt.h);
+
             if (skin.appendRender != 'none') {
 
                 skin.draw();
 
             }
 
+			ctx.restore();
+			
+            // old way
+            /*
+            ctx.translate(pt.x + pt.w / 2, pt.y + pt.h / 2);
+            ctx.rotate(pt.radian);
+
+            skin = pt.skin;
+
+            if (Number(skin.imgIndex) > -1) {
+
+            // if we have a skin for the part use the skin
+            ctx.strokeStyle = '#ff0000';
+            ctx.drawImage(
+            state.img[skin.imgIndex],
+            skin.sx,
+            skin.sy,
+            skin.sw,
+            skin.sh,
+            -pt.w / 2 + Number(skin.xOffset),
+            -pt.h / 2 + Number(skin.yOffset),
+            pt.w,
+            pt.h);
+
+            if (skin.renderPartBox) {
+
+            ctx.strokeRect(-pt.w / 2, -pt.h / 2, pt.w, pt.h);
+
+            }
+
+            }
+
+            if (skin.appendRender != 'none') {
+
+            skin.draw();
+
+            }
+
             ctx.restore();
+            */
 
         }
 
