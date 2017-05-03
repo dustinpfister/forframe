@@ -134,8 +134,10 @@ scene({
             },
 
             skin : {
-                //imgIndex : 2,
-                sx : 0,
+                imgIndex : 3,
+                sx : 200,
+                sw : 60,
+                sh : 60,
                 appendRender : function (ctx, skin) {
 
                     var pt = skin.part;
@@ -164,8 +166,10 @@ scene({
             },
 
             skin : {
-                //imgIndex : 2,
+                imgIndex : 3,
                 sx : 0,
+                sw : 60,
+                sh : 120,
                 appendRender : function (ctx, skin) {
 
                     var pt = skin.part;
@@ -195,8 +199,10 @@ scene({
             },
 
             skin : {
-                //imgIndex : 2,
-                sx : 0,
+                imgIndex : 3,
+                sx : 60,
+                sw : 40,
+                sh : 96,
                 appendRender : function (ctx, skin) {
 
                     var pt = skin.part;
@@ -226,8 +232,10 @@ scene({
             },
 
             skin : {
-                //imgIndex : 2,
-                sx : 0,
+                imgIndex : 3,
+                sx : 100,
+                sw : 40,
+                sh : 96,
                 appendRender : function (ctx, skin) {
 
                     var pt = skin.part;
@@ -259,8 +267,10 @@ scene({
             },
 
             skin : {
-                //imgIndex : 2,
-                sx : 0,
+                imgIndex : 3,
+                sx : 140,
+                sw : 30,
+                sh : 80,
                 appendRender : function (ctx, skin) {
 
                     var pt = skin.part;
@@ -274,8 +284,8 @@ scene({
                 }
             }
         },
-		
-		// emme forarm right
+
+        // emme forarm right
         {
 
             id : 'emme_forarm_right',
@@ -289,14 +299,16 @@ scene({
                 pt.y = 140 - 18 * bias;
                 pt.rx = -15;
                 pt.ry = -15;
-				pt.radian = Math.PI;
+                pt.radian = Math.PI;
                 //pt.radian = Math.PI / 2 - .2 * bias;
 
             },
 
             skin : {
-                //imgIndex : 2,
-                sx : 0,
+                imgIndex : 3,
+                sx : 170,
+                sw : 30,
+                sh : 80,
                 appendRender : function (ctx, skin) {
 
                     var pt = skin.part;
@@ -325,7 +337,8 @@ scene.load(
     [
         'img/mylogo_128.png',
         'demos/seahorse/img/horse_body.png',
-        'demos/seahorse/img/horse_head_2.png'
+        'demos/seahorse/img/horse_head_2.png',
+        'demos/seahorse/img/emme_parts.png'
     ],
     function (progress) {
 
