@@ -81,12 +81,12 @@ scene({
 
                 var bias = 1 - Math.abs(.5 - this.percentDone) / .5;
 
-                pt.x = pt_hb.x + pt_hb.w;
-                pt.y = pt_hb.y;
+                pt.x = pt_hb.x + pt_hb.w-20;
+                pt.y = pt_hb.y + 20;
                 pt.rx = -pt.w / 2;
-                pt.ry = -pt.h;
+                pt.ry = -pt.h/1.5;
 
-                pt.radian = Math.PI / 4 + 1 * bias;
+                pt.radian = Math.PI / 4 + .5 * bias;
 
             },
             skin : {
