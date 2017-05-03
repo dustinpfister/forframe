@@ -47,6 +47,10 @@ scene({
                 pt.x = this.viewPort.w / 2 - pt.w / 2;
                 pt.y = this.viewPort.h / 2 - pt.h / 2 - 50 * bias + 70;
 
+                //pt.radian = Math.PI / 4;
+
+                console.log();
+
             },
             skin : {
                 imgIndex : 1,
@@ -81,10 +85,10 @@ scene({
 
                 var bias = 1 - Math.abs(.5 - this.percentDone) / .5;
 
-                pt.x = pt_hb.x + pt_hb.w-20;
+                pt.x = pt_hb.x + pt_hb.w - 20;
                 pt.y = pt_hb.y + 20;
                 pt.rx = -pt.w / 2;
-                pt.ry = -pt.h/1.5;
+                pt.ry = -pt.h / 1.5;
 
                 pt.radian = Math.PI / 4 + .5 * bias;
 
@@ -110,6 +114,64 @@ scene({
 
             }
 
+        },
+
+        // emme body
+        {
+
+            id : 'emme_body',
+            w : 60,
+            h : 120,
+            forFrame : function (pt) {
+
+                var bias = 1 - Math.abs(.5 - this.percentDone) / .5;
+
+                pt.x = 120;
+                pt.y = 120 - 35 * bias;
+
+            },
+
+            skin : {
+                //imgIndex : 2,
+                sx : 0,
+                appendRender : function (ctx, skin) {
+
+                    var pt = skin.part;
+
+                    ctx.strokeStyle = 'rgba(255,255,0,1)';
+
+                    ctx.strokeRect(0, 0, pt.w, pt.h);
+
+                }
+            }
+        }, {
+
+            id : 'emme_thigh_right',
+            w : 60,
+            h : 120,
+            forFrame : function (pt) {
+
+                var bias = 1 - Math.abs(.5 - this.percentDone) / .5;
+
+                pt.x = 120;
+                pt.y = 240 - 35 * bias;
+                pt.radian = Math.PI * -0.4 + .2 * bias;
+
+            },
+
+            skin : {
+                //imgIndex : 2,
+                sx : 0,
+                appendRender : function (ctx, skin) {
+
+                    var pt = skin.part;
+
+                    ctx.strokeStyle = 'rgba(255,0,255,1)';
+
+                    ctx.strokeRect(0, 0, pt.w, pt.h);
+
+                }
+            }
         }
 
     ],

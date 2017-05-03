@@ -156,6 +156,20 @@ var scene = (function () {
 
     };
 
+	/*
+    Part.prototype.ajustTo = function (x,y) {
+
+        return {
+
+		    x : this.x + Math.cos(this.radian) * x,
+			y : this.y + Math.sin(this.radian) * y,
+            foo : 'bar'
+
+        }
+
+    };
+	*/
+
     // main scene setup method
     var api = function (options) {
 
