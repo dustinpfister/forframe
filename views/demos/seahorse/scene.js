@@ -338,7 +338,7 @@ scene.load(
         'img/mylogo_128.png',
         'demos/seahorse/img/horse_body.png',
         'demos/seahorse/img/horse_head_2.png',
-        'demos/seahorse/img/emme_parts.png'
+        'demos/seahorse/img/emme_parts_2.png'
     ],
     function (progress) {
 
