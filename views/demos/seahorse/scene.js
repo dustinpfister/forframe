@@ -182,8 +182,8 @@ scene({
         {
 
             id : 'emme_thigh_right',
-            w : 60,
-            h : 120,
+            w : 40,
+            h : 96,
             forFrame : function (pt) {
 
                 var bias = 1 - Math.abs(.5 - this.percentDone) / .5;
@@ -213,8 +213,8 @@ scene({
         {
 
             id : 'emme_caff_right',
-            w : 60,
-            h : 80,
+            w : 40,
+            h : 96,
             forFrame : function (pt) {
 
                 var bias = 1 - Math.abs(.5 - this.percentDone) / .5;
