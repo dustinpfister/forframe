@@ -4,6 +4,8 @@ scene.js demo for forframe.js
 
  */
 
+var showAreas = false;
+
 scene({
 
     projectName : 'seahorse',
@@ -32,7 +34,76 @@ scene({
 
     parts : [
 
-        // body
+        // emme_thigh_right
+        {
+
+            id : 'emme_thigh_left',
+            w : 40,
+            h : 96,
+            forFrame : function (pt) {
+
+                var bias = 1 - Math.abs(.5 - this.percentDone) / .5;
+
+                pt.x = 160;
+                pt.y = 240 - 35 * bias;
+                pt.radian = Math.PI * -0.5 + .15 * bias;
+
+            },
+
+            skin : {
+                imgIndex : 3,
+                sx : 60,
+                sw : 40,
+                sh : 96,
+                appendRender : function (ctx, skin) {
+
+                    var pt = skin.part;
+
+                    if (showAreas) {
+
+                        ctx.strokeStyle = 'rgba(255,0,255,1)';
+
+                        ctx.strokeRect(0, 0, pt.w, pt.h);
+
+                    }
+                }
+            }
+        },
+
+        // emme caff right
+        {
+
+            id : 'emme_caff_left',
+            w : 40,
+            h : 96,
+            forFrame : function (pt) {
+
+                var bias = 1 - Math.abs(.5 - this.percentDone) / .5;
+
+                pt.x = 235;
+                pt.y = 215 - 15 * bias;
+                pt.radian =  - .2 + .2 * bias;
+
+            },
+
+            skin : {
+                imgIndex : 3,
+                sx : 100,
+                sw : 40,
+                sh : 96,
+                appendRender : function (ctx, skin) {
+
+                    var pt = skin.part;
+                    if (showAreas) {
+                        ctx.strokeStyle = 'rgba(0,0,255,1)';
+
+                        ctx.strokeRect(0, 0, pt.w, pt.h);
+                    }
+                }
+            }
+        },
+
+        // seahorse body
         {
 
             id : 'horse_body',
@@ -40,31 +111,29 @@ scene({
             h : 200,
             forFrame : function (pt) {
 
-                //pt.x = this.percentDone * 100;
-
                 var bias = 1 - Math.abs(.5 - this.percentDone) / .5;
 
                 pt.x = this.viewPort.w / 2 - pt.w / 2;
                 pt.y = this.viewPort.h / 2 - pt.h / 2 - 50 * bias + 70;
 
-                //pt.radian = Math.PI / 4;
-
-                console.log();
-
             },
             skin : {
-                imgIndex : 1,
+                //imgIndex : 1,
                 sx : 0,
                 appendRender : function (ctx, skin) {
 
                     var pt = skin.part;
 
-                    ctx.strokeStyle = 'rgba(255,0,0,.4)';
-                    ctx.strokeRect(0, 0, pt.w, pt.h);
-                    ctx.strokeStyle = 'rgba(255,0,0,1)';
-                    ctx.strokeRect(pt.rx, pt.ry, pt.w, pt.h);
+                    if (showAreas) {
+                        ctx.strokeStyle = 'rgba(255,0,0,.4)';
+                        ctx.strokeRect(0, 0, pt.w, pt.h);
+                        ctx.strokeStyle = 'rgba(255,0,0,1)';
+                        ctx.strokeRect(pt.rx, pt.ry, pt.w, pt.h);
 
-                    ctx.drawImage(this.img[skin.imgIndex], 0, 0, pt.w, pt.h);
+                    }
+
+                    // ???
+                    ctx.drawImage(this.img[1], 0, 0, pt.w, pt.h);
 
                 }
 
@@ -87,11 +156,8 @@ scene({
 
                 pt.x = pt_hb.x + pt_hb.w / 2;
                 pt.y = pt_hb.y;
-                //pt.rx = -pt.w / 2;
-                //pt.ry = -pt.h / 1.5;
 
                 pt.radian =  - .15 + .15 * bias;
-                //pt.radian = 0;//Math.PI / 4 + .5 * bias;
 
             },
             skin : {
@@ -100,13 +166,10 @@ scene({
                 appendRender : function (ctx, skin) {
 
                     var pt = skin.part;
-
-                    //ctx.strokeStyle = 'rgba(0,255,0,.2)';
-
-                    //ctx.strokeRect(0, 0, pt.w, pt.h);
-                    ctx.strokeStyle = '#00ff00';
-                    ctx.strokeRect(pt.rx, pt.ry, pt.w, pt.h);
-
+                    if (showAreas) {
+                        ctx.strokeStyle = '#00ff00';
+                        ctx.strokeRect(pt.rx, pt.ry, pt.w, pt.h);
+                    }
                     ctx.drawImage(this.img[2], pt.rx, pt.ry, pt.w, pt.h);
 
                 }
@@ -125,7 +188,7 @@ scene({
 
                 var bias = 1 - Math.abs(.5 - this.percentDone) / .5;
 
-                pt.x = 180;
+                pt.x = 175;
                 pt.y = 90 - 35 * bias;
                 pt.rx = -pt.w / 2;
                 pt.ry = -pt.h / 2;
@@ -141,11 +204,11 @@ scene({
                 appendRender : function (ctx, skin) {
 
                     var pt = skin.part;
+                    if (showAreas) {
+                        ctx.strokeStyle = 'rgba(255,128,0,1)';
 
-                    ctx.strokeStyle = 'rgba(255,128,0,1)';
-
-                    ctx.strokeRect(pt.rx, pt.ry, pt.w, pt.h);
-
+                        ctx.strokeRect(pt.rx, pt.ry, pt.w, pt.h);
+                    }
                 }
             }
         },
@@ -160,7 +223,7 @@ scene({
 
                 var bias = 1 - Math.abs(.5 - this.percentDone) / .5;
 
-                pt.x = 150;
+                pt.x = 160;
                 pt.y = 120 - 35 * bias;
 
             },
@@ -173,16 +236,17 @@ scene({
                 appendRender : function (ctx, skin) {
 
                     var pt = skin.part;
+                    if (showAreas) {
+                        ctx.strokeStyle = 'rgba(255,255,0,1)';
 
-                    ctx.strokeStyle = 'rgba(255,255,0,1)';
-
-                    ctx.strokeRect(0, 0, pt.w, pt.h);
-
+                        ctx.strokeRect(0, 0, pt.w, pt.h);
+                    }
                 }
             }
         },
 
         // emme_thigh_right
+
         {
 
             id : 'emme_thigh_right',
@@ -192,7 +256,7 @@ scene({
 
                 var bias = 1 - Math.abs(.5 - this.percentDone) / .5;
 
-                pt.x = 150;
+                pt.x = 160;
                 pt.y = 240 - 35 * bias;
                 pt.radian = Math.PI * -0.4 + .2 * bias;
 
@@ -206,11 +270,11 @@ scene({
                 appendRender : function (ctx, skin) {
 
                     var pt = skin.part;
+                    if (showAreas) {
+                        ctx.strokeStyle = 'rgba(255,0,255,1)';
 
-                    ctx.strokeStyle = 'rgba(255,0,255,1)';
-
-                    ctx.strokeRect(0, 0, pt.w, pt.h);
-
+                        ctx.strokeRect(0, 0, pt.w, pt.h);
+                    }
                 }
             }
         },
@@ -225,7 +289,7 @@ scene({
 
                 var bias = 1 - Math.abs(.5 - this.percentDone) / .5;
 
-                pt.x = 230;
+                pt.x = 240;
                 pt.y = 240 - 15 * bias;
                 pt.radian = .4 * bias;
 
@@ -239,11 +303,11 @@ scene({
                 appendRender : function (ctx, skin) {
 
                     var pt = skin.part;
+                    if (showAreas) {
+                        ctx.strokeStyle = 'rgba(0,0,255,1)';
 
-                    ctx.strokeStyle = 'rgba(0,0,255,1)';
-
-                    ctx.strokeRect(0, 0, pt.w, pt.h);
-
+                        ctx.strokeRect(0, 0, pt.w, pt.h);
+                    }
                 }
             }
         },
@@ -258,7 +322,7 @@ scene({
 
                 var bias = 1 - Math.abs(.5 - this.percentDone) / .5;
 
-                pt.x = 180;
+                pt.x = 190;
                 pt.y = 140 - 35 * bias;
                 pt.rx = -15;
                 pt.ry = 0;
@@ -274,13 +338,10 @@ scene({
                 appendRender : function (ctx, skin) {
 
                     var pt = skin.part;
-
-                    //ctx.strokeStyle = 'rgba(0,128,0,.4)';
-                    //ctx.strokeRect(0, 0, pt.w, pt.h);
-
-                    ctx.strokeStyle = 'rgba(0,128,0,1)';
-                    ctx.strokeRect(pt.rx, pt.ry, pt.w, pt.h);
-
+                    if (showAreas) {
+                        ctx.strokeStyle = 'rgba(0,128,0,1)';
+                        ctx.strokeRect(pt.rx, pt.ry, pt.w, pt.h);
+                    }
                 }
             }
         },
@@ -300,7 +361,6 @@ scene({
                 pt.rx = -15;
                 pt.ry = -15;
                 pt.radian = Math.PI;
-                //pt.radian = Math.PI / 2 - .2 * bias;
 
             },
 
@@ -312,13 +372,13 @@ scene({
                 appendRender : function (ctx, skin) {
 
                     var pt = skin.part;
+                    if (showAreas) {
+                        ctx.strokeStyle = 'rgba(0,0,128,.4)';
+                        ctx.strokeRect(0, 0, pt.w, pt.h);
 
-                    ctx.strokeStyle = 'rgba(0,0,128,.4)';
-                    ctx.strokeRect(0, 0, pt.w, pt.h);
-
-                    ctx.strokeStyle = 'rgba(0,0,128,1)';
-                    ctx.strokeRect(pt.rx, pt.ry, pt.w, pt.h);
-
+                        ctx.strokeStyle = 'rgba(0,0,128,1)';
+                        ctx.strokeRect(pt.rx, pt.ry, pt.w, pt.h);
+                    }
                 }
             }
         }
