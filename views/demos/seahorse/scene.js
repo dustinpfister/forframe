@@ -64,7 +64,7 @@ scene({
                     ctx.strokeStyle = 'rgba(255,0,0,1)';
                     ctx.strokeRect(pt.rx, pt.ry, pt.w, pt.h);
 
-                    ctx.drawImage(this.img[skin.imgIndex],0,0,pt.w,pt.h);
+                    ctx.drawImage(this.img[skin.imgIndex], 0, 0, pt.w, pt.h);
 
                 }
 
@@ -85,12 +85,12 @@ scene({
 
                 var bias = 1 - Math.abs(.5 - this.percentDone) / .5;
 
-                pt.x = pt_hb.x + pt_hb.w/2;
+                pt.x = pt_hb.x + pt_hb.w / 2;
                 pt.y = pt_hb.y;
                 //pt.rx = -pt.w / 2;
                 //pt.ry = -pt.h / 1.5;
 
-				pt.radian = -.15 + .15 * bias;
+                pt.radian =  - .15 + .15 * bias;
                 //pt.radian = 0;//Math.PI / 4 + .5 * bias;
 
             },
@@ -107,7 +107,7 @@ scene({
                     ctx.strokeStyle = '#00ff00';
                     ctx.strokeRect(pt.rx, pt.ry, pt.w, pt.h);
 
-                    ctx.drawImage(this.img[2],pt.rx,pt.ry,pt.w,pt.h);
+                    ctx.drawImage(this.img[2], pt.rx, pt.ry, pt.w, pt.h);
 
                 }
 
@@ -125,7 +125,7 @@ scene({
 
                 var bias = 1 - Math.abs(.5 - this.percentDone) / .5;
 
-                pt.x = 150;
+                pt.x = 180;
                 pt.y = 90 - 35 * bias;
                 pt.rx = -pt.w / 2;
                 pt.ry = -pt.h / 2;
@@ -158,7 +158,7 @@ scene({
 
                 var bias = 1 - Math.abs(.5 - this.percentDone) / .5;
 
-                pt.x = 120;
+                pt.x = 150;
                 pt.y = 120 - 35 * bias;
 
             },
@@ -188,7 +188,7 @@ scene({
 
                 var bias = 1 - Math.abs(.5 - this.percentDone) / .5;
 
-                pt.x = 120;
+                pt.x = 150;
                 pt.y = 240 - 35 * bias;
                 pt.radian = Math.PI * -0.4 + .2 * bias;
 
@@ -219,7 +219,7 @@ scene({
 
                 var bias = 1 - Math.abs(.5 - this.percentDone) / .5;
 
-                pt.x = 200;
+                pt.x = 230;
                 pt.y = 240 - 15 * bias;
                 pt.radian = .4 * bias;
 
@@ -235,6 +235,77 @@ scene({
                     ctx.strokeStyle = 'rgba(0,0,255,1)';
 
                     ctx.strokeRect(0, 0, pt.w, pt.h);
+
+                }
+            }
+        },
+
+        // emme bicep right
+        {
+
+            id : 'emme_bicep_right',
+            w : 30,
+            h : 80,
+            forFrame : function (pt) {
+
+                var bias = 1 - Math.abs(.5 - this.percentDone) / .5;
+
+                pt.x = 180;
+                pt.y = 140 - 35 * bias;
+                pt.rx = -15;
+                pt.ry = 0;
+                pt.radian = Math.PI / 2 - .2 * bias;
+
+            },
+
+            skin : {
+                //imgIndex : 2,
+                sx : 0,
+                appendRender : function (ctx, skin) {
+
+                    var pt = skin.part;
+
+                    //ctx.strokeStyle = 'rgba(0,128,0,.4)';
+                    //ctx.strokeRect(0, 0, pt.w, pt.h);
+
+                    ctx.strokeStyle = 'rgba(0,128,0,1)';
+                    ctx.strokeRect(pt.rx, pt.ry, pt.w, pt.h);
+
+                }
+            }
+        },
+		
+		// emme forarm right
+        {
+
+            id : 'emme_forarm_right',
+            w : 30,
+            h : 80,
+            forFrame : function (pt) {
+
+                var bias = 1 - Math.abs(.5 - this.percentDone) / .5;
+
+                pt.x = 114;
+                pt.y = 140 - 18 * bias;
+                pt.rx = -15;
+                pt.ry = -15;
+				pt.radian = Math.PI;
+                //pt.radian = Math.PI / 2 - .2 * bias;
+
+            },
+
+            skin : {
+                //imgIndex : 2,
+                sx : 0,
+                appendRender : function (ctx, skin) {
+
+                    var pt = skin.part;
+
+                    ctx.strokeStyle = 'rgba(0,0,128,.4)';
+                    ctx.strokeRect(0, 0, pt.w, pt.h);
+
+                    ctx.strokeStyle = 'rgba(0,0,128,1)';
+                    ctx.strokeRect(pt.rx, pt.ry, pt.w, pt.h);
 
                 }
             }
