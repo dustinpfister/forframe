@@ -64,7 +64,7 @@ scene({
                     ctx.strokeStyle = 'rgba(255,0,0,1)';
                     ctx.strokeRect(pt.rx, pt.ry, pt.w, pt.h);
 
-                    //ctx.drawImage(this.img[skin.imgIndex],0,0,pt.w,pt.h);
+                    ctx.drawImage(this.img[skin.imgIndex],0,0,pt.w,pt.h);
 
                 }
 
@@ -85,12 +85,13 @@ scene({
 
                 var bias = 1 - Math.abs(.5 - this.percentDone) / .5;
 
-                pt.x = pt_hb.x + pt_hb.w - 20;
-                pt.y = pt_hb.y + 20;
-                pt.rx = -pt.w / 2;
-                pt.ry = -pt.h / 1.5;
+                pt.x = pt_hb.x + pt_hb.w/2;
+                pt.y = pt_hb.y;
+                //pt.rx = -pt.w / 2;
+                //pt.ry = -pt.h / 1.5;
 
-                pt.radian = Math.PI / 4 + .5 * bias;
+				pt.radian = -.15 + .15 * bias;
+                //pt.radian = 0;//Math.PI / 4 + .5 * bias;
 
             },
             skin : {
@@ -100,20 +101,51 @@ scene({
 
                     var pt = skin.part;
 
-                    ctx.strokeStyle = 'rgba(0,255,0,.2)';
+                    //ctx.strokeStyle = 'rgba(0,255,0,.2)';
 
-                    ctx.strokeRect(0, 0, pt.w, pt.h);
+                    //ctx.strokeRect(0, 0, pt.w, pt.h);
                     ctx.strokeStyle = '#00ff00';
                     ctx.strokeRect(pt.rx, pt.ry, pt.w, pt.h);
 
-                    //ctx.drawImage(this.img[skin.imgIndex],0,0);
-
-                    //ctx.drawImage(this.img[2],0,0,pt.w,pt.h);
+                    ctx.drawImage(this.img[2],pt.rx,pt.ry,pt.w,pt.h);
 
                 }
 
             }
 
+        },
+
+        // emme head
+        {
+
+            id : 'emme_head',
+            w : 60,
+            h : 60,
+            forFrame : function (pt) {
+
+                var bias = 1 - Math.abs(.5 - this.percentDone) / .5;
+
+                pt.x = 150;
+                pt.y = 90 - 35 * bias;
+                pt.rx = -pt.w / 2;
+                pt.ry = -pt.h / 2;
+                pt.radian =  - .15 * bias;
+
+            },
+
+            skin : {
+                //imgIndex : 2,
+                sx : 0,
+                appendRender : function (ctx, skin) {
+
+                    var pt = skin.part;
+
+                    ctx.strokeStyle = 'rgba(255,128,0,1)';
+
+                    ctx.strokeRect(pt.rx, pt.ry, pt.w, pt.h);
+
+                }
+            }
         },
 
         // emme body
@@ -144,7 +176,10 @@ scene({
 
                 }
             }
-        }, {
+        },
+
+        // emme_thigh_right
+        {
 
             id : 'emme_thigh_right',
             w : 60,
@@ -167,6 +202,37 @@ scene({
                     var pt = skin.part;
 
                     ctx.strokeStyle = 'rgba(255,0,255,1)';
+
+                    ctx.strokeRect(0, 0, pt.w, pt.h);
+
+                }
+            }
+        },
+
+        // emme caff right
+        {
+
+            id : 'emme_caff_right',
+            w : 60,
+            h : 80,
+            forFrame : function (pt) {
+
+                var bias = 1 - Math.abs(.5 - this.percentDone) / .5;
+
+                pt.x = 200;
+                pt.y = 240 - 15 * bias;
+                pt.radian = .4 * bias;
+
+            },
+
+            skin : {
+                //imgIndex : 2,
+                sx : 0,
+                appendRender : function (ctx, skin) {
+
+                    var pt = skin.part;
+
+                    ctx.strokeStyle = 'rgba(0,0,255,1)';
 
                     ctx.strokeRect(0, 0, pt.w, pt.h);
 
