@@ -107,12 +107,6 @@ scene.injectPlugin({
 
             }
 
-            ctx.strokeStyle = '#ffff00';
-            ctx.strokeRect(pt.rx,
-                pt.ry,
-                pt.w,
-                pt.h);
-
             if (skin.appendRender != 'none') {
 
                 skin.draw();

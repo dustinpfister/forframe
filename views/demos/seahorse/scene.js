@@ -55,8 +55,10 @@ scene({
 
                     var pt = skin.part;
 
-                    //ctx.strokeStyle = '#ff0000';
-                    //ctx.strokeRect(0, 0, pt.w, pt.h);
+                    ctx.strokeStyle = 'rgba(255,0,0,.4)';
+                    ctx.strokeRect(0, 0, pt.w, pt.h);
+                    ctx.strokeStyle = 'rgba(255,0,0,1)';
+                    ctx.strokeRect(pt.rx, pt.ry, pt.w, pt.h);
 
                     //ctx.drawImage(this.img[skin.imgIndex],0,0,pt.w,pt.h);
 
@@ -94,7 +96,7 @@ scene({
 
                     var pt = skin.part;
 
-                    ctx.strokeStyle = 'rgba(0,255,0,.4)';
+                    ctx.strokeStyle = 'rgba(0,255,0,.2)';
 
                     ctx.strokeRect(0, 0, pt.w, pt.h);
                     ctx.strokeStyle = '#00ff00';
