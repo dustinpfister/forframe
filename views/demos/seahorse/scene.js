@@ -6,7 +6,7 @@ scene.js demo for forframe.js
 
 scene({
 
-    projectName : 'demo1',
+    projectName : 'seahorse',
 
     maxFrame : 50,
 
@@ -45,7 +45,7 @@ scene({
                 var bias = 1 - Math.abs(.5 - this.percentDone) / .5;
 
                 pt.x = this.viewPort.w / 2 - pt.w / 2;
-                pt.y = this.viewPort.h / 2 - pt.h / 2 - 50 * bias+100;
+                pt.y = this.viewPort.h / 2 - pt.h / 2 - 50 * bias + 70;
 
             },
             skin : {
@@ -58,7 +58,7 @@ scene({
                     //ctx.strokeStyle = '#ff0000';
                     //ctx.strokeRect(0, 0, pt.w, pt.h);
 
-                    ctx.drawImage(this.img[skin.imgIndex],0,0,pt.w,pt.h);
+                    //ctx.drawImage(this.img[skin.imgIndex],0,0,pt.w,pt.h);
 
                 }
 
@@ -79,23 +79,12 @@ scene({
 
                 var bias = 1 - Math.abs(.5 - this.percentDone) / .5;
 
-                //pt.radian = Math.PI / 4 - Math.PI / 4 * bias;
-                //pt.rx = pt_hb.x;
-                //pt.ry = pt_hb.y;
+                pt.x = pt_hb.x + pt_hb.w;
+                pt.y = pt_hb.y;
+                pt.rx = -pt.w / 2;
+                pt.ry = -pt.h;
 
-                //pt.ry = 0;
-                //pt.rx = 0;
-                //pt.x=0;
-                //pt.y=0;
-                pt.x = pt_hb.x+80;
-                pt.y = pt_hb.y-16;
-
-
-                pt.radian = .2* bias
-                    //pt.x = this.viewPort.w / 2 - pt.w / 2 + 32;
-                    //pt.y = this.viewPort.h / 2 - pt.h / 2 - 50 * bias - 64;
-
-                    console.log();
+                pt.radian = Math.PI / 4 + 1 * bias;
 
             },
             skin : {
@@ -105,12 +94,15 @@ scene({
 
                     var pt = skin.part;
 
-                   // ctx.strokeStyle = '#ff0000';
-                    //ctx.strokeRect(0, 0, pt.w, pt.h);
+                    ctx.strokeStyle = 'rgba(0,255,0,.4)';
+
+                    ctx.strokeRect(0, 0, pt.w, pt.h);
+                    ctx.strokeStyle = '#00ff00';
+                    ctx.strokeRect(pt.rx, pt.ry, pt.w, pt.h);
 
                     //ctx.drawImage(this.img[skin.imgIndex],0,0);
-					
-                    ctx.drawImage(this.img[2],0,0,pt.w,pt.h);
+
+                    //ctx.drawImage(this.img[2],0,0,pt.w,pt.h);
 
                 }
 
@@ -131,8 +123,8 @@ scene.injectCanvas('ui_display');
 scene.load(
     [
         'img/mylogo_128.png',
-        'demos/background/img/horse_body.png',
-        'demos/background/img/horse_head_2.png'
+        'demos/seahorse/img/horse_body.png',
+        'demos/seahorse/img/horse_head_2.png'
     ],
     function (progress) {
 

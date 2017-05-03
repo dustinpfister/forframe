@@ -150,8 +150,6 @@ var scene = (function () {
         }
 
         // setting rxn and ry to undefined for now
-        this.rx = undefined;
-        this.ry = undefined;
 
         // default that Parts skin to a blank Skin class instance
         this.skin = new Skin(this, values.skin);
