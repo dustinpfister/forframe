@@ -34,6 +34,79 @@ scene({
 
     parts : [
 
+        // emme bicep right
+        {
+
+            id : 'emme_bicep_left',
+            w : 30,
+            h : 80,
+            forFrame : function (pt) {
+
+                var bias = 1 - Math.abs(.5 - this.percentDone) / .5;
+
+                pt.x = 190;
+                pt.y = 140 - 35 * bias;
+                pt.rx = -15;
+                pt.ry = 0;
+                pt.radian = -Math.PI / 2 - .2 * bias;
+
+				
+				
+            },
+
+            skin : {
+                imgIndex : 3,
+                sx : 140,
+                sw : 30,
+                sh : 80,
+                appendRender : function (ctx, skin) {
+
+                    var pt = skin.part;
+                    if (showAreas) {
+                        ctx.strokeStyle = 'rgba(0,128,0,1)';
+                        ctx.strokeRect(pt.rx, pt.ry, pt.w, pt.h);
+                    }
+                }
+            }
+        },
+
+        // emme forarm right
+        {
+
+            id : 'emme_forarm_left',
+            w : 30,
+            h : 80,
+            forFrame : function (pt) {
+
+                var bias = 1 - Math.abs(.5 - this.percentDone) / .5;
+
+                pt.x = 260;
+                pt.y = 140 - 50 * bias;
+                pt.rx = -15;
+                pt.ry = -15;
+                pt.radian = Math.PI + .7;
+
+            },
+
+            skin : {
+                imgIndex : 3,
+                sx : 170,
+                sw : 30,
+                sh : 80,
+                appendRender : function (ctx, skin) {
+
+                    var pt = skin.part;
+                    if (showAreas) {
+                        ctx.strokeStyle = 'rgba(0,0,128,.4)';
+                        ctx.strokeRect(0, 0, pt.w, pt.h);
+
+                        ctx.strokeStyle = 'rgba(0,0,128,1)';
+                        ctx.strokeRect(pt.rx, pt.ry, pt.w, pt.h);
+                    }
+                }
+            }
+        },
+
         // emme_thigh_right
         {
 
