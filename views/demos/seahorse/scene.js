@@ -413,39 +413,7 @@ scene({
 
         },
 
-        // emme body
-        {
-
-            id : 'emme_body',
-            w : 60,
-            h : 120,
-            forFrame : function (pt) {
-
-                var bias = 1 - Math.abs(.5 - this.percentDone) / .5;
-
-                pt.x = 160;
-                pt.y = 120 - 35 * bias;
-
-            },
-
-            skin : {
-                imgIndex : 3,
-                sx : 0,
-                sw : 60,
-                sh : 120,
-                appendRender : function (ctx, skin) {
-
-                    var pt = skin.part;
-                    if (showAreas) {
-                        ctx.strokeStyle = 'rgba(255,255,0,1)';
-
-                        ctx.strokeRect(0, 0, pt.w, pt.h);
-                    }
-                }
-            }
-        },
-
-        // emme_thigh_right
+		// emme_thigh_right
 
         {
 
@@ -511,6 +479,40 @@ scene({
                 }
             }
         },
+		
+        // emme body
+        {
+
+            id : 'emme_body',
+            w : 60,
+            h : 120,
+            forFrame : function (pt) {
+
+                var bias = 1 - Math.abs(.5 - this.percentDone) / .5;
+
+                pt.x = 160;
+                pt.y = 120 - 35 * bias;
+
+            },
+
+            skin : {
+                imgIndex : 3,
+                sx : 0,
+                sw : 60,
+                sh : 120,
+                appendRender : function (ctx, skin) {
+
+                    var pt = skin.part;
+                    if (showAreas) {
+                        ctx.strokeStyle = 'rgba(255,255,0,1)';
+
+                        ctx.strokeRect(0, 0, pt.w, pt.h);
+                    }
+                }
+            }
+        },
+
+        
 
         // emme bicep right
         {
@@ -634,7 +636,7 @@ scene.load(
         'demos/seahorse/img/horse_body.png',
         'demos/seahorse/img/horse_head_2.png',
         'demos/seahorse/img/emme_parts.png',
-        'demos/seahorse/img/background_2_seamless.png'
+        'demos/seahorse/img/background_3_seamless.png'
     ],
     function (progress) {
 
