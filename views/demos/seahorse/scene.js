@@ -104,7 +104,7 @@ scene({
 
     projectName : 'seahorse',
 
-    maxFrame : 50,
+    maxFrame : 100,
 
     viewPort : {
 
@@ -284,10 +284,11 @@ scene({
             h : 224,
             forFrame : function (pt) {
 
-                var pt_hb = this.parts['horse_body'];
+                var pt_hb = this.parts['horse_body'],
+                bias = 1 - Math.abs(.5 - this.percentDone) / .5;
 
                 pt.x = pt_hb.x + 10;
-                pt.y = pt_hb.y - 30;
+                pt.y = pt_hb.y - 30 - 10 * bias;
             },
 
             skin : {
@@ -307,10 +308,12 @@ scene({
             h : 70,
             forFrame : function (pt) {
 
-                var bias = 1 - Math.abs(.5 - this.percentDone) / .5;
+                var pt_hb = this.parts['horse_body'],
+                bias = 1 - Math.abs(.5 - this.percentDone) / .5;
 
                 pt.x = 212;
-                pt.y = 115 - 50 * bias;
+                //pt.y = 115 - 50 * bias;
+                pt.y = pt_hb.y - 30 - 10 * bias;
                 pt.rx = -pt.w / 2;
                 pt.ry = -pt.h / 2;
                 pt.radian = .25 * bias;
