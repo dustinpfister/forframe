@@ -147,7 +147,7 @@ scene({
                 };
 
                 bg.findSourceValues();
-				//bg.setDestValues();
+                //bg.setDestValues();
 
                 //console.log(bg);
 
@@ -188,7 +188,7 @@ scene({
 
                             (952 - dc.sw) / 952 * 480 * i,
                             0,
-                            dc.sw / 952 * 480 ,
+                            dc.sw / 952 * 480,
                             360);
 
                     });
@@ -413,41 +413,6 @@ scene({
 
         },
 
-        // emme head
-        {
-
-            id : 'emme_head',
-            w : 60,
-            h : 60,
-            forFrame : function (pt) {
-
-                var bias = 1 - Math.abs(.5 - this.percentDone) / .5;
-
-                pt.x = 175;
-                pt.y = 90 - 35 * bias;
-                pt.rx = -pt.w / 2;
-                pt.ry = -pt.h / 2;
-                pt.radian =  - .15 * bias;
-
-            },
-
-            skin : {
-                imgIndex : 3,
-                sx : 200,
-                sw : 60,
-                sh : 60,
-                appendRender : function (ctx, skin) {
-
-                    var pt = skin.part;
-                    if (showAreas) {
-                        ctx.strokeStyle = 'rgba(255,128,0,1)';
-
-                        ctx.strokeRect(pt.rx, pt.ry, pt.w, pt.h);
-                    }
-                }
-            }
-        },
-
         // emme body
         {
 
@@ -616,7 +581,42 @@ scene({
                     }
                 }
             }
-        }
+        },
+
+        // emme head
+        {
+
+            id : 'emme_head',
+            w : 75,
+            h : 75,
+            forFrame : function (pt) {
+
+                var bias = 1 - Math.abs(.5 - this.percentDone) / .5;
+
+                pt.x = 175;
+                pt.y = 90 - 35 * bias;
+                pt.rx = -pt.w / 2;
+                pt.ry = -pt.h / 2;
+                pt.radian =  - .15 * bias;
+
+            },
+
+            skin : {
+                imgIndex : 3,
+                sx : 200,
+                sw : 60,
+                sh : 60,
+                appendRender : function (ctx, skin) {
+
+                    var pt = skin.part;
+                    if (showAreas) {
+                        ctx.strokeStyle = 'rgba(255,128,0,1)';
+
+                        ctx.strokeRect(pt.rx, pt.ry, pt.w, pt.h);
+                    }
+                }
+            }
+        },
 
     ],
 
