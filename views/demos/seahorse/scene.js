@@ -93,6 +93,13 @@ BG_lin.prototype.findSourceValues = function () {
 
 };
 
+var bg = new BG_lin({
+
+        sw : 3000,
+        sh : 952
+
+    });
+
 scene({
 
     projectName : 'seahorse',
@@ -119,8 +126,7 @@ scene({
         }
     },
 
-    parts : [
-        {
+    parts : [{
 
             id : 'background',
 
@@ -128,6 +134,22 @@ scene({
 
                 pt.w = this.viewPort.w;
                 pt.h = this.viewPort.h;
+
+                // set backgorund view port
+
+                bg.vp = {
+
+                    w : 952,
+                    h : 952,
+                    x : 3000 * this.percentDone,
+                    y : 0
+
+                };
+
+                bg.findSourceValues();
+				//bg.setDestValues();
+
+                //console.log(bg);
 
             },
 
@@ -138,14 +160,39 @@ scene({
                 //sh : 80,
                 appendRender : function (ctx, skin) {
 
-                    var pt = skin.part;
+                    var pt = skin.part,
+                    self = this;
+
                     if (showAreas) {
                         ctx.strokeStyle = 'rgba(0,128,0,1)';
                         ctx.strokeRect(pt.rx, pt.ry, pt.w, pt.h);
                     }
 
                     ctx.fillStyle = '#2a2a2a';
-                    ctx.fillRect(0, 0, pt.w, pt.h);
+                    //ctx.fillRect(0, 0, pt.w, pt.h);
+
+                    //ctx.drawImage(this.img[4], 0, 0, 952, 952, 0, 0, this.viewPort.w, this.viewPort.h);
+
+
+                    bg.drawCalls.forEach(function (dc, i) {
+
+                        //console.log(dc);
+
+                        ctx.drawImage(
+
+                            self.img[4],
+                            dc.sx,
+                            dc.sy,
+                            dc.sw,
+                            dc.sh,
+
+                            (952 - dc.sw) / 952 * 480 * i,
+                            0,
+                            dc.sw / 952 * 480 ,
+                            360);
+
+                    });
+
                 }
             }
 
