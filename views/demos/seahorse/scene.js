@@ -300,30 +300,27 @@ scene({
         },
 
         //emme head
-
-
         {
 
             id : 'emme_head',
-            w : 60,
-            h : 60,
+            w : 70,
+            h : 70,
             forFrame : function (pt) {
 
                 var bias = 1 - Math.abs(.5 - this.percentDone) / .5;
 
-                pt.x = 200;
-                pt.y = 100 - 50 * bias;
+                pt.x = 212;
+                pt.y = 115 - 50 * bias;
                 pt.rx = -pt.w / 2;
                 pt.ry = -pt.h / 2;
-                pt.radian =  - .15 * bias;
+                pt.radian = .25 * bias;
 
             },
 
             skin : {
-                imgIndex : 3,
-                sx : 200,
-                sw : 60,
-                sh : 60,
+                imgIndex : 6,
+                sw : 371,
+                sh : 491,
                 appendRender : function (ctx, skin) {
 
                     var pt = skin.part;
@@ -353,7 +350,8 @@ scene.load(
         'demos/seahorse/img/horse_head_2.png',
         'demos/seahorse/img/emme_parts.png',
         'demos/seahorse/img/background_3_seamless.png',
-        'demos/seahorse/img/body1.png'
+        'demos/seahorse/img/body1.png',
+        'demos/seahorse/img/emme_head.png'
     ],
     function (progress) {
 
