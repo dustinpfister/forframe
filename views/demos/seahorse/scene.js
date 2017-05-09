@@ -5,6 +5,93 @@ scene.js demo for forframe.js
  */
 
 var showAreas = false;
+var BG_lin = function (options) {
+
+    options = options || {};
+
+    this.sw = options.sw || 256;
+    this.sh = options.sh || 64;
+
+    this.vp = {
+
+        w : 32,
+        h : 32,
+        x : 240,
+        y : 0
+
+    };
+
+    this.drawCalls = [];
+
+    // find source values with current vp state
+    this.findSourceValues();
+
+    // set destanation values
+    this.setDestValues();
+
+};
+
+BG_lin.prototype.setDestValues = function () {
+
+    var x = 0,
+    y = 0,
+    self = this;
+
+    this.drawCalls.forEach(function (drawCall) {
+
+        drawCall.dx = x + (drawCall.sx ? Math.abs(self.vp.w - (self.sw - drawCall.sx)) : 0);
+        drawCall.dy = y;
+        drawCall.dw = self.vp.w;
+        drawCall.dh = self.vp.h;
+
+    });
+
+};
+
+// get source values for add draw Image calls (sx,sy,sw,sh)
+BG_lin.prototype.findSourceValues = function () {
+
+    this.drawCalls = [];
+
+    if (this.vp.x + this.vp.w > this.sw) {
+
+        // need two
+        this.drawCalls.push({
+
+            // the part that is at the far right side
+            sx : this.vp.x,
+            sy : this.vp.y,
+            sw : this.sw - this.vp.x,
+            sh : this.vp.h
+
+        });
+
+        this.drawCalls.push({
+
+            // the part at the far left of the source image
+            sx : 0,
+            sy : this.vp.y,
+            sw : this.vp.w - (this.sw - this.vp.x),
+            sh : this.vp.h,
+
+        });
+
+    } else {
+
+        // just need one
+        this.drawCalls.push({
+
+            // just get it when it's one call
+            sx : this.vp.x,
+            sy : this.vp.y,
+            sw : this.vp.w,
+            sh : this.vp.h
+
+        });
+
+    }
+
+};
 
 scene({
 
@@ -33,6 +120,36 @@ scene({
     },
 
     parts : [
+        {
+
+            id : 'background',
+
+            forFrame : function (pt) {
+
+                pt.w = this.viewPort.w;
+                pt.h = this.viewPort.h;
+
+            },
+
+            skin : {
+                //imgIndex : 3,
+                //sx : 140,
+                //sw : 30,
+                //sh : 80,
+                appendRender : function (ctx, skin) {
+
+                    var pt = skin.part;
+                    if (showAreas) {
+                        ctx.strokeStyle = 'rgba(0,128,0,1)';
+                        ctx.strokeRect(pt.rx, pt.ry, pt.w, pt.h);
+                    }
+
+                    ctx.fillStyle = '#2a2a2a';
+                    ctx.fillRect(0, 0, pt.w, pt.h);
+                }
+            }
+
+        },
 
         // emme bicep right
         {
@@ -50,8 +167,6 @@ scene({
                 pt.ry = 0;
                 pt.radian = -Math.PI / 2 - .2 * bias;
 
-				
-				
             },
 
             skin : {
@@ -471,7 +586,8 @@ scene.load(
         'img/mylogo_128.png',
         'demos/seahorse/img/horse_body.png',
         'demos/seahorse/img/horse_head_2.png',
-        'demos/seahorse/img/emme_parts_2.png'
+        'demos/seahorse/img/emme_parts_2.png',
+        'demos/seahorse/img/background_2_seamless.png'
     ],
     function (progress) {
 
