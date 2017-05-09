@@ -300,11 +300,36 @@ scene({
 
         },
 
+        // body
+        {
+
+            id : 'body_arm',
+            w : 77,
+            h : 224,
+            forFrame : function (pt) {
+
+                var pt_hb = this.parts['horse_body'],
+                bias = 1 - Math.abs(.5 - this.percentDone) / .5;
+
+                pt.x = pt_hb.x + 16;
+                pt.y = pt_hb.y - 27 - 10 * bias;
+                pt.radian =  - .1 * bias;
+            },
+
+            skin : {
+                imgIndex : 7,
+                sw : 77,
+                sh : 224,
+                appendRender : function (ctx, skin) {}
+            }
+
+        },
+
         //emme head
         {
 
             id : 'emme_head',
-            w : 70,
+            w : 60,
             h : 70,
             forFrame : function (pt) {
 
@@ -354,7 +379,8 @@ scene.load(
         'demos/seahorse/img/emme_parts.png',
         'demos/seahorse/img/background_3_seamless.png',
         'demos/seahorse/img/body1.png',
-        'demos/seahorse/img/emme_head.png'
+        'demos/seahorse/img/emme_head.png',
+        'demos/seahorse/img/body_arm1.png'
     ],
     function (progress) {
 
