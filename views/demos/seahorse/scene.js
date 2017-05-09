@@ -126,7 +126,10 @@ scene({
         }
     },
 
-    parts : [{
+    parts : [
+
+        // background
+        {
 
             id : 'background',
 
@@ -198,146 +201,6 @@ scene({
 
         },
 
-        // emme bicep right
-        {
-
-            id : 'emme_bicep_left',
-            w : 30,
-            h : 80,
-            forFrame : function (pt) {
-
-                var bias = 1 - Math.abs(.5 - this.percentDone) / .5;
-
-                pt.x = 190;
-                pt.y = 140 - 35 * bias;
-                pt.rx = -15;
-                pt.ry = 0;
-                pt.radian = -Math.PI / 2 - .2 * bias;
-
-            },
-
-            skin : {
-                imgIndex : 3,
-                sx : 140,
-                sw : 30,
-                sh : 80,
-                appendRender : function (ctx, skin) {
-
-                    var pt = skin.part;
-                    if (showAreas) {
-                        ctx.strokeStyle = 'rgba(0,128,0,1)';
-                        ctx.strokeRect(pt.rx, pt.ry, pt.w, pt.h);
-                    }
-                }
-            }
-        },
-
-        // emme forarm right
-        {
-
-            id : 'emme_forarm_left',
-            w : 30,
-            h : 80,
-            forFrame : function (pt) {
-
-                var bias = 1 - Math.abs(.5 - this.percentDone) / .5;
-
-                pt.x = 260;
-                pt.y = 140 - 50 * bias;
-                pt.rx = -15;
-                pt.ry = -15;
-                pt.radian = Math.PI + .7;
-
-            },
-
-            skin : {
-                imgIndex : 3,
-                sx : 170,
-                sw : 30,
-                sh : 80,
-                appendRender : function (ctx, skin) {
-
-                    var pt = skin.part;
-                    if (showAreas) {
-                        ctx.strokeStyle = 'rgba(0,0,128,.4)';
-                        ctx.strokeRect(0, 0, pt.w, pt.h);
-
-                        ctx.strokeStyle = 'rgba(0,0,128,1)';
-                        ctx.strokeRect(pt.rx, pt.ry, pt.w, pt.h);
-                    }
-                }
-            }
-        },
-
-        // emme_thigh_right
-        {
-
-            id : 'emme_thigh_left',
-            w : 40,
-            h : 96,
-            forFrame : function (pt) {
-
-                var bias = 1 - Math.abs(.5 - this.percentDone) / .5;
-
-                pt.x = 160;
-                pt.y = 240 - 35 * bias;
-                pt.radian = Math.PI * -0.5 + .15 * bias;
-
-            },
-
-            skin : {
-                imgIndex : 3,
-                sx : 60,
-                sw : 40,
-                sh : 96,
-                appendRender : function (ctx, skin) {
-
-                    var pt = skin.part;
-
-                    if (showAreas) {
-
-                        ctx.strokeStyle = 'rgba(255,0,255,1)';
-
-                        ctx.strokeRect(0, 0, pt.w, pt.h);
-
-                    }
-                }
-            }
-        },
-
-        // emme caff right
-        {
-
-            id : 'emme_caff_left',
-            w : 40,
-            h : 96,
-            forFrame : function (pt) {
-
-                var bias = 1 - Math.abs(.5 - this.percentDone) / .5;
-
-                pt.x = 235;
-                pt.y = 215 - 15 * bias;
-                pt.radian =  - .2 + .2 * bias;
-
-            },
-
-            skin : {
-                imgIndex : 3,
-                sx : 100,
-                sw : 40,
-                sh : 96,
-                appendRender : function (ctx, skin) {
-
-                    var pt = skin.part;
-                    if (showAreas) {
-                        ctx.strokeStyle = 'rgba(0,0,255,1)';
-
-                        ctx.strokeRect(0, 0, pt.w, pt.h);
-                    }
-                }
-            }
-        },
-
         // seahorse body
         {
 
@@ -376,7 +239,7 @@ scene({
 
         },
 
-        // head
+        // seahorse head
         {
 
             id : 'horse_head',
@@ -413,190 +276,43 @@ scene({
 
         },
 
-		// emme_thigh_right
-
+        // body
         {
 
-            id : 'emme_thigh_right',
-            w : 40,
-            h : 96,
+            id : 'body_front',
+            w : 77,
+            h : 224,
             forFrame : function (pt) {
 
-                var bias = 1 - Math.abs(.5 - this.percentDone) / .5;
+                var pt_hb = this.parts['horse_body'];
 
-                pt.x = 160;
-                pt.y = 240 - 35 * bias;
-                pt.radian = Math.PI * -0.4 + .2 * bias;
-
+                pt.x = pt_hb.x + 10;
+                pt.y = pt_hb.y - 30;
             },
 
             skin : {
-                imgIndex : 3,
-                sx : 60,
-                sw : 40,
-                sh : 96,
-                appendRender : function (ctx, skin) {
-
-                    var pt = skin.part;
-                    if (showAreas) {
-                        ctx.strokeStyle = 'rgba(255,0,255,1)';
-
-                        ctx.strokeRect(0, 0, pt.w, pt.h);
-                    }
-                }
+                imgIndex : 5,
+                sw : 77,
+                sh : 224,
+                appendRender : function (ctx, skin) {}
             }
+
         },
 
-        // emme caff right
-        {
+        //emme head
 
-            id : 'emme_caff_right',
-            w : 40,
-            h : 96,
-            forFrame : function (pt) {
 
-                var bias = 1 - Math.abs(.5 - this.percentDone) / .5;
-
-                pt.x = 240;
-                pt.y = 240 - 15 * bias;
-                pt.radian = .4 * bias;
-
-            },
-
-            skin : {
-                imgIndex : 3,
-                sx : 100,
-                sw : 40,
-                sh : 96,
-                appendRender : function (ctx, skin) {
-
-                    var pt = skin.part;
-                    if (showAreas) {
-                        ctx.strokeStyle = 'rgba(0,0,255,1)';
-
-                        ctx.strokeRect(0, 0, pt.w, pt.h);
-                    }
-                }
-            }
-        },
-		
-        // emme body
-        {
-
-            id : 'emme_body',
-            w : 60,
-            h : 120,
-            forFrame : function (pt) {
-
-                var bias = 1 - Math.abs(.5 - this.percentDone) / .5;
-
-                pt.x = 160;
-                pt.y = 120 - 35 * bias;
-
-            },
-
-            skin : {
-                imgIndex : 3,
-                sx : 0,
-                sw : 60,
-                sh : 120,
-                appendRender : function (ctx, skin) {
-
-                    var pt = skin.part;
-                    if (showAreas) {
-                        ctx.strokeStyle = 'rgba(255,255,0,1)';
-
-                        ctx.strokeRect(0, 0, pt.w, pt.h);
-                    }
-                }
-            }
-        },
-
-        
-
-        // emme bicep right
-        {
-
-            id : 'emme_bicep_right',
-            w : 30,
-            h : 80,
-            forFrame : function (pt) {
-
-                var bias = 1 - Math.abs(.5 - this.percentDone) / .5;
-
-                pt.x = 190;
-                pt.y = 140 - 35 * bias;
-                pt.rx = -15;
-                pt.ry = 0;
-                pt.radian = Math.PI / 2 - .2 * bias;
-
-            },
-
-            skin : {
-                imgIndex : 3,
-                sx : 140,
-                sw : 30,
-                sh : 80,
-                appendRender : function (ctx, skin) {
-
-                    var pt = skin.part;
-                    if (showAreas) {
-                        ctx.strokeStyle = 'rgba(0,128,0,1)';
-                        ctx.strokeRect(pt.rx, pt.ry, pt.w, pt.h);
-                    }
-                }
-            }
-        },
-
-        // emme forarm right
-        {
-
-            id : 'emme_forarm_right',
-            w : 30,
-            h : 80,
-            forFrame : function (pt) {
-
-                var bias = 1 - Math.abs(.5 - this.percentDone) / .5;
-
-                pt.x = 114;
-                pt.y = 140 - 18 * bias;
-                pt.rx = -15;
-                pt.ry = -15;
-                pt.radian = Math.PI;
-
-            },
-
-            skin : {
-                imgIndex : 3,
-                sx : 170,
-                sw : 30,
-                sh : 80,
-                appendRender : function (ctx, skin) {
-
-                    var pt = skin.part;
-                    if (showAreas) {
-                        ctx.strokeStyle = 'rgba(0,0,128,.4)';
-                        ctx.strokeRect(0, 0, pt.w, pt.h);
-
-                        ctx.strokeStyle = 'rgba(0,0,128,1)';
-                        ctx.strokeRect(pt.rx, pt.ry, pt.w, pt.h);
-                    }
-                }
-            }
-        },
-
-        // emme head
         {
 
             id : 'emme_head',
-            w : 75,
-            h : 75,
+            w : 60,
+            h : 60,
             forFrame : function (pt) {
 
                 var bias = 1 - Math.abs(.5 - this.percentDone) / .5;
 
-                pt.x = 175;
-                pt.y = 90 - 35 * bias;
+                pt.x = 200;
+                pt.y = 100 - 50 * bias;
                 pt.rx = -pt.w / 2;
                 pt.ry = -pt.h / 2;
                 pt.radian =  - .15 * bias;
@@ -618,7 +334,7 @@ scene({
                     }
                 }
             }
-        },
+        }
 
     ],
 
@@ -636,7 +352,8 @@ scene.load(
         'demos/seahorse/img/horse_body.png',
         'demos/seahorse/img/horse_head_2.png',
         'demos/seahorse/img/emme_parts.png',
-        'demos/seahorse/img/background_3_seamless.png'
+        'demos/seahorse/img/background_3_seamless.png',
+        'demos/seahorse/img/body1.png'
     ],
     function (progress) {
 
