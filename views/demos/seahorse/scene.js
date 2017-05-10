@@ -104,7 +104,7 @@ scene({
 
     projectName : 'seahorse',
 
-    maxFrame : 100,
+    maxFrame : 75,
 
     viewPort : {
 
@@ -116,7 +116,7 @@ scene({
     logo : {
         w : 128,
         h : 56,
-        opacity : .4,
+        opacity : .05,
         skin : {
             imgIndex : 0,
             sx : 0,
@@ -288,13 +288,13 @@ scene({
                 bias = 1 - Math.abs(.5 - this.percentDone) / .5;
 
                 pt.x = pt_hb.x + 10;
-                pt.y = pt_hb.y - 30 - 10 * bias;
+                pt.y = pt_hb.y - 40 - 10 * bias;
             },
 
             skin : {
                 imgIndex : 5,
                 sw : 77,
-                sh : 224,
+                sh : 250,
                 appendRender : function (ctx, skin) {}
             }
 
@@ -312,8 +312,8 @@ scene({
                 bias = 1 - Math.abs(.5 - this.percentDone) / .5;
 
                 pt.x = pt_hb.x + 16;
-                pt.y = pt_hb.y - 27 - 10 * bias;
-                pt.radian =  - .1 * bias;
+                pt.y = pt_hb.y - 15 - 10 * bias;
+                pt.radian =  - .12 * bias;
             },
 
             skin : {
@@ -336,12 +336,12 @@ scene({
                 var pt_hb = this.parts['horse_body'],
                 bias = 1 - Math.abs(.5 - this.percentDone) / .5;
 
-                pt.x = 212;
+                pt.x = 214;
                 //pt.y = 115 - 50 * bias;
-                pt.y = pt_hb.y - 30 - 10 * bias;
+                pt.y = pt_hb.y - 27 - 10 * bias;
                 pt.rx = -pt.w / 2;
                 pt.ry = -pt.h / 2;
-                pt.radian = .25 * bias;
+                pt.radian = .3 * bias;
 
             },
 
@@ -374,11 +374,11 @@ scene.injectCanvas('ui_display');
 scene.load(
     [
         'img/mylogo_128.png',
-        'demos/seahorse/img/horse_body.png',
-        'demos/seahorse/img/horse_head_2.png',
+        'demos/seahorse/img/horse_body_20.png',
+        'demos/seahorse/img/horse_head_20.png',
         'demos/seahorse/img/emme_parts.png',
-        'demos/seahorse/img/background_3_seamless.png',
-        'demos/seahorse/img/body1.png',
+        'demos/seahorse/img/background_2_seamless.png',
+        'demos/seahorse/img/body2.png',
         'demos/seahorse/img/emme_head.png',
         'demos/seahorse/img/body_arm1.png'
     ],
